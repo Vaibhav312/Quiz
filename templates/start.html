@@ -1,0 +1,42 @@
+{% extends "main.html" %}
+{% load static %}
+{% block body_block %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card d-flex justify-content-center align-items-center">
+            <div class="card-body py-5">
+                <h1 class="card-title text-center">Quiz Instructions</h1>
+                <p class="card-text py-3 ">
+                <div class="container">
+                <h5 class="text-center">These instructions should follow the test attendee to avoid problems:</h5><br/>
+
+                 (1).&nbsp;&nbsp;&nbsp;&nbsp;   It consists of 10 number of questions, time and some more points to remember during the test.<br/>
+                 (2).&nbsp;&nbsp;&nbsp;&nbsp;   The aspirants should go through the question thoroughly.Correct answer leads to 10 points and incorrect answer leads to  points <br/>
+                 (3).&nbsp;&nbsp;&nbsp;&nbsp;   5min time limit for the online test<br/>
+                 (4).&nbsp;&nbsp;&nbsp;&nbsp;   The candidates who complete the test can submit their test by just hit on the ‘submit’ button.<br/>
+                 (5).&nbsp;&nbsp;&nbsp;&nbsp;   In any case, while going through the test don’t refresh the page.<br/>
+                 </p>
+                 </div>
+                
+                <div class="text-center my-5">
+                    <a href="{% url 'main' %}" class="btn btn-primary align-center">Start Quiz</a>
+                </div>
+                
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+  
+<style>
+.card{
+    margin:80px auto;
+    border-radius:5px;
+            box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+            background-color:#f0e6d3;
+            opacity:0.8;
+}
+</style>   
+    
+{% endblock  %}
