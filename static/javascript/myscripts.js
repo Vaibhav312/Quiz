@@ -59,7 +59,7 @@ $(document).ready(function() {
     (function($) {
 
 
-        shuffleElements($('.answer_buttons'));
+
         $(".answer_buttons").click(function() {
             $("#correct_answer_ques").html("Previous Question: " + $question_value + "<br/>");
             $("#correct_answer_display").html("Correct Answer: " + $correct_answer);
@@ -67,6 +67,7 @@ $(document).ready(function() {
             if (count <= 10) {
 
                 sendApiRequest();
+                shuffleElements($('.answer_buttons'));
                 count++;
 
 
@@ -113,7 +114,7 @@ $(document).ready(function() {
         document.getElementById('timer').innerHTML =
             m + ":" + s;
 
-        setTimeout(startTimer, 1000);
+        setTimeout(startTimer, 3000);
     }
 
     function checkSecond(sec) {

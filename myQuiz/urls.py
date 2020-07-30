@@ -1,15 +1,16 @@
-from django.conf.urls import url
-from myQuiz import views
-from django.urls import path
+from django.urls import path,reverse_lazy
+from django.conf.urls import url,include
 from django.contrib.auth.urls import views as auth_views
+from myQuiz import views
+from django.conf.urls.static import static
 
 urlpatterns = [
-    url(r'^$',views.index,name='index'),
-    url(r'register/',views.register,name='register'),
-    path('user_login/',views.user_login,name='user_login'),
-    path('logout/', views.user_logout, name='logout'),
-    path('main/',views.main,name="main"),
-    path('start/',views.startPage,name="startPage"),
+    url(r'^$',views.index,name='index'), 
+    url(r'register',views.register,name='register'),
+    path('user_login/',views.user_login,name='user_login'), 
+    path('logout', views.user_logout, name='logout'),
+    path('main',views.main,name="main"),
+    path('start',views.startPage,name="startPage"),
 
 
     path('reset_password/',

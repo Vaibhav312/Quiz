@@ -101,7 +101,7 @@ def register(request):
                 # Registration Successful!
                 registered = True
                 login(request,user)
-                request.session['username']=user.username
+                #request.session['username']=user.username
           
                 return HttpResponseRedirect(reverse('user_login'))
 
@@ -139,7 +139,7 @@ def user_login(request):
                     # Send the user back to some page.
                     # In this case their homepage.
                     #request.session.set_expiry(60)
-                    request.session['username']=username
+                    #request.session['username']=username
                     return HttpResponseRedirect(reverse('startPage'))
                 else:
                     # If account is not active:
@@ -147,11 +147,14 @@ def user_login(request):
             else:
                 print("Someone tried to login and failed.")
                 print("They used username: {} and password: {}".format(username,password))
+               
                 messages.success(request, 'Wrong Credentials!',extra_tags='alert')
+                
 
         else:
             #Nothing has been provided for username or password.
             return render(request, 'login.html',)
+           
     return HttpResponseRedirect(reverse('startPage'))
 
 

@@ -19,6 +19,13 @@ body{
 
   <div class="container py-5" id="login_conatiner" style=" margin:100px auto;">
       <h1 style="text-align:center;">Login</h1>
+      <div class="container text-center" id="saved_messages">
+                {% for message in messages %}
+                    <div class="alert alert-danger">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+          </div>
 
         <form method="POST" action="{% url 'user_login' %}">
           {% csrf_token %}
@@ -39,7 +46,9 @@ body{
             </div>
           <div class="text-center">
             <input type="submit" id="login_user" value="Login" class="btn btn-primary">
+            
           </div>
+          
          
         </form>
         <h5 style="text-align:center;margin-top:20px;color: #584153;" id="text_alert">Forgot your password? <a href="{% url 'reset_password' %}">Click Here</a></h5>
@@ -47,13 +56,7 @@ body{
          <h5 style="text-align:center;margin-top:20px;color: #584153;" id="text_alert">New USer: <a href="{% url 'register' %}">Sign up</a></h5>
         
   </div>
-  <div class="container" id="saved_messages">
-        {% for message in messages %}
-            <div class="alert alert-danger" style="font-size:20px;display:inline-block;margin:0px 40% ;">
-                {{ message }}
-            </div>
-        {% endfor %}
-  </div>
+  
   <script>
  
     setTimeout(function() {
