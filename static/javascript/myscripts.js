@@ -8,6 +8,14 @@ async function sendApiRequest() {
     useApirequest(data);
 
 }
+
+$(function() {
+    $('.navbar-collapse a').click(function() {
+
+        $(".navbar-collapse ").collapse('hide');
+    });
+});
+
 $(window).on('load', function() {
     if ($('.cover').length) {
         $('.cover').parallax({
@@ -162,5 +170,7 @@ $(document).ready(function() {
 });
 
 
+
+/******************************************************************************Timer*****************************************************************/
 
 /******************************************************************************Timer*****************************************************************/
