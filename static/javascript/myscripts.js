@@ -1,10 +1,11 @@
 window.onload = sendApiRequest
 
+
 async function sendApiRequest() {
     let response = await fetch("https://opentdb.com/api.php?amount=10&type=multiple");
 
     let data = await response.json();
-    console.log(data);
+    // console.log(data);
     useApirequest(data);
 
 }
@@ -14,6 +15,7 @@ $(function() {
 
         $(".navbar-collapse ").collapse('hide');
     });
+
 });
 
 $(window).on('load', function() {
@@ -60,9 +62,10 @@ function useApirequest(data) {
 $(document).ready(function() {
     var count = 1;
     var progess = 0;
+
     var sum = 0;
 
-
+    setInterval(updateCountdown, 1000);
 
     (function($) {
 
@@ -89,8 +92,10 @@ $(document).ready(function() {
     })(jQuery);
 
     $('.answer_buttons').click(function() {
+
         progess = progess + 10;
         $(".progress-bar").css("width", progess + '%').attr('aria-valuenow', progess);
+        $("#progres_bar_value").html((progess / 10) <= 10 ? progess + " %" : 100 + " %");
 
         var fired_button = $(this).attr('id');
         var correct_button = $("#answer1").attr('id');
@@ -108,35 +113,28 @@ $(document).ready(function() {
 
 
     /****************************************************** Timer ************************************************/
-    document.getElementById('timer').innerHTML = 003 + ":" + 00;
-    startTimer();
 
-    function startTimer() {
-        var presentTime = document.getElementById('timer').innerHTML;
-        var timeArray = presentTime.split(/[:]+/);
-        var m = timeArray[0];
-        var s = checkSecond((timeArray[1] - 1));
-        if (s == 59) { m = m - 1 }
-        //if(m<0){alert('timer completed')}
 
-        document.getElementById('timer').innerHTML =
-            m + ":" + s;
+    const startingMinutes = 03;
+    var time = startingMinutes * 60;
 
-        setTimeout(startTimer, 3000);
-    }
 
-    function checkSecond(sec) {
-        if (sec < 10 && sec >= 0) { sec = "0" + sec }; // add zero in front of numbers < 10
-        if (sec < 0) { sec = "59" };
-        if (sec == 0) {
+    function updateCountdown() {
+
+        const minute = Math.floor(time / 60);
+        let seconds = time % 60;
+        seconds = seconds < 10 ? '0' + seconds : seconds;
+        document.getElementById('timer').innerHTML = minute + ":" + seconds;
+        console.log(minute);
+        console.log(seconds);
+        time--;
+        if (minute == 0 && seconds == 0) {
             //alert("Time's up");
             document.location.href = $("#Url").attr("data-url");
         }
-        return sec;
+
+
     }
-
-
-
 
     /******************************************************************************shuffle indexes*****************************************************************/
     function shuffleElements($elements) {
@@ -168,9 +166,3 @@ $(document).ready(function() {
 
 
 });
-
-
-
-/******************************************************************************Timer*****************************************************************/
-
-/******************************************************************************Timer*****************************************************************/
